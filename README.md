@@ -44,7 +44,7 @@ Note that your cgi script has no direct access to the socket object. In order to
 As a parameter to your cgi thread, the http.lua module will provide the header
 object, which is a table with the following fields:
 
-	* **filename** = the url from the **GET** request.
+* **filename** = the url from the **GET** request.
 
 In addition, any name:value pairs from the query string will be placed in the header table as ``header.name=value``
 
