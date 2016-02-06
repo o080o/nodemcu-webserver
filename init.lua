@@ -10,6 +10,7 @@ local bad = { --blacklisted bootreason status codes (with descriptions)
 	[2]="exception reset",
 	[3]="software watchdog reset" }
 local raw,status = node.bootreason()
+if not status then return end --old bootreason function. can't do.
 if good[status] then
 	local ok, err
 	if status==6 then -- on rst & deep sleep wakeu
