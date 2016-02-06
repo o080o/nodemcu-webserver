@@ -1,6 +1,6 @@
 #Vibrium
 
-Vibrium is a small collection of scripts for NoduMCU firmware running on the ESP8266. The goal of these scripts is to provide a complete set of tools to upload code easily to the ESP8266 wirelessly and provide basic web functionality in a small and compact environment.
+Vibrium is a small collection of scripts for NoduMCU firmware running on the ESP8266. The goal of these scripts is to provide a complete set of tools to upload code easily to the ESP8266 wirelessly and provide basic web functionality in a small and small memory footprint. All told, the running server with a telnet connection takes around 15k on recent builds, with my build leaving me with around 32k (on integer builds, but I wouldn't expect too much more on float builds).
 
 ##Instalation
 
