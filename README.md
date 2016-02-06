@@ -4,7 +4,7 @@ Vibrium is a small collection of scripts for NoduMCU firmware running on the ESP
 
 ##Instalation
 
-To install to the device, use a serial upload tool such as luatool.py, or esplorer, to upload **queuemanager.lua** **tinyserver.lua** and **put.lua**.  Access the device over the serial port using PuTTy/screen/miniterm/etc and execute ``dofile("tinyserver.lua")()`` to start the server. The rest of the files can be uploaded using **putfile** on your local machine. ex: ``lua putfile.lua 192.168.4.1 init.lua testinit.lua`` to upload *init.lua* as *testinit.lua* on the server at 192.168.4.1.
+To install to the device, use a serial upload tool such as luatool.py, or esplorer, to upload **queuemanager.lua** **tinyserver.lua** and **put.lua**.  Access the device over the serial port using PuTTy/screen/miniterm/etc and execute ``dofile("tinyserver.lua")()`` to start the server. The rest of the files can be uploaded using **putfile.lua** on your local machine. ex: ``lua putfile.lua 192.168.4.1 init.lua testinit.lua`` to upload *init.lua* as *testinit.lua* on the server at 192.168.4.1.
 
 ##Tinyserver.lua
 
