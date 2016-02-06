@@ -12,10 +12,15 @@ local function telnetSetup(c,str)
 	local co = coroutine.create(telnetCo) 
 	coroutine.resume(co, queue)
 	table.insert(queue, co)
+	node.output(function(str)
+		local disconnect=true
+		for c,q in pairs(serverconf.connections) do
+			if q.telnet then
+				q.telnet[1]=(q.telnet[1] or '')..str
+				disconnect = false
+			end
+		end
+		if disconnect = true then node.output(nil) end
+	end, 0)
 end
-node.output(function(str)
-	for c,q in pairs(serverconf.connections) do
-		if q.telnet then q.telnet[1]=(q.telnet[1] or '')..str end
-	end
-end, 1)
 return  {pattern="", func=telnet, name='telnet', setup=telnetSetup}
