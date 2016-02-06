@@ -16,7 +16,7 @@ local function connect(c, str)
 end
 return function()
 	if server then server:close() end
-	serverconf =  (file.list()["serverconf.lua"] and dofile("serverconf.lua")) or {prefix="", pathsymbol="/", timerID=0, timerPeriod=500, port=80}
+	serverconf =  (file.list()["serverconf.lua"] and dofile("serverconf.lua")) or {prefix="", pathsymbol="/", timerID=0, timerPeriod=50, port=80}
 	dofile("queuemanager.lua")(serverconf.timerPeriod, serverconf.timerID)
 
 	server = net.createServer(net.TCP, serverconf.timeout or 180)
