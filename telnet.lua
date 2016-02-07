@@ -3,7 +3,9 @@ local function telnet(c, str)
 end
 local function telnetCo(q)
 	while not q.disconnect do
-		coroutine.yield(table.remove(q.telnet, 1))
+		local str = table.concat(q.telnet)
+		q.telnet = {}
+		coroutine.yield(str)
 	end
 end
 local function telnetSetup(c,str)
@@ -16,11 +18,11 @@ local function telnetSetup(c,str)
 		local disconnect=true
 		for c,q in pairs(serverconf.connections) do
 			if q.telnet then
-				q.telnet[1]=(q.telnet[1] or '')..str
+				table.insert(q.telnet, str)
 				disconnect = false
 			end
 		end
-		if disconnect = true then node.output(nil) end
+		if disconnect then node.output(nil) end
 	end, 0)
 end
 return  {pattern="", func=telnet, name='telnet', setup=telnetSetup}
