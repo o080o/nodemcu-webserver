@@ -1,3 +1,6 @@
+local function firstTime(c, str)
+	c:on("receive", receive) --act normally on the next packet.
+end
 local function receive(c, str)
 	uart.write(0, str)
 end
