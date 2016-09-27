@@ -14,6 +14,11 @@ local function telnetSetup(c,str)
 	local co = coroutine.create(telnetCo) 
 	coroutine.resume(co, queue)
 	table.insert(queue, co)
+
+	--checks if any telnet sessions are active, and if
+	--not, reverts to default behavior.
+	--note that every telnet session will revieve the
+	--same responses.
 	node.output(function(str)
 		local disconnect=true
 		for c,q in pairs(serverconf.connections) do
