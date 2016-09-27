@@ -17,6 +17,9 @@ description into the **serverconf.mode** table. Note that modes are matched
 **in order** starting from index 1. For an example of a mode description, see
 telnet.lua. For an example of adding modes to the server, see autorun.lua.
 
+Alternatively, run the install script, **install.sh** and then execute
+`dofile("simpleinit.lua")` over a serial terminal.
+
 ###Http.lua
 
 This file provides basic handling of  **GET** requests for local files on the server, and access to cgi scripts if attempting to access *.lc* or *.lua* files. See the section on cgi scripts for more information. **note that this mode requires the sendfile.lua cgi script**

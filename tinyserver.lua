@@ -17,7 +17,12 @@ end
 return function()
 	if server then server:close() end
 	serverconf =  (file.list()["serverconf.lua"] and dofile("serverconf.lua")) or {prefix="", pathsymbol="/", timerID=0, timerPeriod=50, port=80}
-	dofile("queuemanager.lua")(serverconf.timerPeriod, serverconf.timerID)
+
+	--attemp both compiled and source versions
+	local ok, Q = pcall(dofile, "queuemanager.lua")
+	if not ok then ok, Q = pcall(dofile, "queuemanager.lc") end
+	Q(serverconf.timerPeriod, serverconf.timerID)
+	--dofile("queuemanager.lua")(serverconf.timerPeriod, serverconf.timerID)
 
 	server = net.createServer(net.TCP, serverconf.timeout or 180)
 	serverconf.connections = {}
