@@ -1,4 +1,4 @@
--- A tiny server that acts as both a webserver AND a Telnet server!
+-- A tiny server that acts as both a webserver AND a Telnet server (or something else)!
 local function connect(c, str)
 	local inputFunc
 	for _, mode in ipairs(serverconf.modes) do
@@ -37,6 +37,7 @@ return function()
 			-- inform the queuemanager that we disconnected
 			serverconf.connections[c].disconnect = true
 			serverconf.connections[c].ready = true
+			--fix for telnet... issues. may not be needed
 			if not next(serverconf.connections) then node.output(nil) end end)
 	end)
 
