@@ -1,10 +1,11 @@
+
+local function receive(c, str)
+	uart.write(0, str)
+end
 local function firstTime(c, str)
 	tmr.alarm(5, 10, 0, function()
 		c:on("receive", receive) --act normally from here on
 	end)
-end
-local function receive(c, str)
-	uart.write(0, str)
 end
 
 local function handler(q)
