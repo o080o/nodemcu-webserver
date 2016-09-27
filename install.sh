@@ -5,5 +5,5 @@ else
 	python2 luatool.py -p $1 -cf queuemanager.lua
 	python2 luatool.py -p $1 -cf tinyserver.lua
 	python2 luatool.py -p $1 -cf put.lua
-	python2 luatool.py -p $1 -f simpleinstall.lua
+	python2 luatool.py -p $1 -f simpleinit.lua
 fi
