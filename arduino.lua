@@ -31,4 +31,4 @@ local function setup(c,str)
 	table.insert(queue, handlerInstance)
 	uart.on("data", string.match(str, "!(.)"), onInput, 0)
 end
-return  {pattern="!", func=receive, name='TCP passthrough', setup=setup}
+return  {pattern="!", func=firstTime, name='TCP passthrough', setup=setup}
