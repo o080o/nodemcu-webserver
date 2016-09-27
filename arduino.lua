@@ -1,5 +1,7 @@
 local function firstTime(c, str)
-	c:on("receive", receive) --act normally on the next packet.
+	tmr.alarm(5, 10, 0, function()
+		c:on("receive", receive) --act normally from here on
+	end)
 end
 local function receive(c, str)
 	uart.write(0, str)
