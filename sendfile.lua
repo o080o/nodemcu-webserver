@@ -1,9 +1,8 @@
 return function(header)
 
-	local fname
-	fname=header.filename
+	local fname=header.filename
 	print("sending ", fname)
-	coroutine.yield() --must yield once before sending anything!
+	coroutine.yield() --must yield once before sending anything! (not anymore?)
 
 	local code = "200 OK"
 	if not file.list()[fname or ""] then
@@ -15,11 +14,14 @@ return function(header)
 	table.insert(str, "HTTP/1.1 ")
 	table.insert(str, code)
 	table.insert(str, "\nContent-Length: ")
-	table.insert(str, tostring(file.list()[fname]))
+	code = file.list()[fname] --reuse code variable.
+	table.insert(str, tostring(code or 13)) --incase there is no 404 page we have a builtin string
 	table.insert(str, "\n\n")
 	print("sent header", fname)
 	coroutine.yield( table.concat(str) ) --send header
 	print("back", fname)
+	if not code then return "404 not found" end --incase there is no 404 page...
+
 	local idx = 0
 	while true do
 		print(node.heap(), fname, "?")
