@@ -13,6 +13,7 @@ local function http(c, str)
 		obj[name]=val
 		name,val,querystr = string.match(querystr, "([^=& ]+)=([^=& ]+)(.*)")
 	until not (name and val and querystr)
+	obj.queue = serverconf.connections[c]
 
 	script = coroutine.create(dofile(script))
 	coroutine.resume(script, obj)
