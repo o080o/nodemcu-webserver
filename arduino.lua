@@ -33,4 +33,4 @@ local function setup(c,str)
 	local delim = tonumber(string.match(str, "!(%d+)")) or string.match(str, "!(.)") or 0
 	uart.on("data", delim, onInput, 0)
 end
-return  {pattern="!", func=firstTime, name='TCP passthrough', setup=setup}
+return  {pattern="", func=firstTime, name='TCP passthrough', setup=setup}
