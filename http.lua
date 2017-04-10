@@ -1,9 +1,13 @@
+local sendfile --determines whether to use .lua or .lc
+if file.list()['sendfile.lc'] then sendfile = 'sendfile.lc'
+else sendfile = 'sendfile.lua' end
+
 local function http(c, str)
 	-- match the first lines of the http packet
 	local url, querystr = string.match(str, "^GET /([^\r\n ?]*)[?]?([^\r\n ?]*) HTTP")
 	url = (url=='' and 'index.html') or url --I hate this special case
 	if not url then return end
-	local script = (string.match(url, ".-[.]l[uc]a?") and file.list()[url] and url) or 'sendfile.lua'
+	local script = (string.match(url, ".-[.]l[uc]a?") and file.list()[url] and url) or sendfile
 	local headerobj, name, val = {}, 'filename', serverconf.prefix..string.gsub(url, "/", serverconf.pathsymbol)
 	
 	-- parse the header key:value pairs

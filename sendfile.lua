@@ -10,8 +10,9 @@ return function(header)
 		fname = (serverconf.prefix or "") .. "404.html"
 	end
 
-	str = {"HTTP/1.1 ", code, "\nContent-Length: ", tostring(file.list()[fname]), "\n\n"}
+	str = {"HTTP/1.1 ", code, "\nContent-Length: ", tostring(file.list()[fname] or 13), "\n\n"}
 	coroutine.yield( table.concat(str) ) --send header
+	if not code then return "404 not found" end --incase there is no 404 page...
 
 	local idx = 0
 	while true do
